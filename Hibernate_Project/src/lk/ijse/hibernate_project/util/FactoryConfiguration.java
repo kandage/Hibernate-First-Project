@@ -1,15 +1,16 @@
 package lk.ijse.hibernate_project.util;
 
+import lk.ijse.hibernate_project.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class FactoryConfiguration {
     private static FactoryConfiguration factoryConfiguration;
-    private static SessionFactory sessionFactory;
+    private  SessionFactory sessionFactory;
 
     private FactoryConfiguration() {
-        Configuration configure = new Configuration().configure();
+        Configuration configure = new Configuration().configure().addAnnotatedClass(Customer.class);
         sessionFactory = configure.buildSessionFactory();
     }
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="526.0" prefWidth="319.0" style="-fx-background-color: #66F784;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hibernate_project.controller.CustomerController">
+   <children>
+      <JFXTextField fx:id="txtid" labelFloat="true" layoutX="69.0" layoutY="91.0" onAction="#getDataOnAction" prefHeight="25.0" prefWidth="217.0" promptText="customer id" />
+      <JFXTextField fx:id="txtname" labelFloat="true" layoutX="70.0" layoutY="136.0" prefHeight="25.0" prefWidth="217.0" promptText="customer name" />
+      <JFXTextField fx:id="txtaddress" labelFloat="true" layoutX="72.0" layoutY="187.0" prefHeight="25.0" prefWidth="217.0" promptText="customer address" />
+      <JFXButton fx:id="btnsave" buttonType="RAISED" layoutX="36.0" layoutY="240.0" onAction="#saveOnAction" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #D17DF3; -fx-background-radius: 20;" text="SAVE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Serif Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="24.0" prefHeight="17.0" prefWidth="226.0" text="Customer Form">
+         <font>
+            <Font name="Serif Regular" size="16.0" />
+         </font>
+      </Label>
+      <Separator layoutX="60.0" layoutY="56.0" prefWidth="200.0" style="-fx-background-color: black;" />
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="27.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/find_user_male_50px.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnupdate" buttonType="RAISED" layoutX="197.0" layoutY="240.0" onAction="#updateOnAction" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #D17DF3; -fx-background-radius: 20;" text="UPDATE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Serif Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tblcustomer" layoutX="3.0" layoutY="287.0" prefHeight="200.0" prefWidth="310.0">
+        <columns>
+          <TableColumn fx:id="colid" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="colname" prefWidth="75.0" text="name" />
+            <TableColumn fx:id="coladdress" prefWidth="75.0" text="address" />
+            <TableColumn fx:id="coloperator" prefWidth="75.0" text="operator" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
