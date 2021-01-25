@@ -4,7 +4,7 @@ import lk.ijse.hibernate_project.entity.Customer;
 import lk.ijse.hibernate_project.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -23,7 +23,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     public boolean delete(String s) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(s);
+        Customer customer = session.get(Customer.class, s);
+        session.delete(customer);
         transaction.commit();
         session.close();
         return true;
@@ -31,7 +32,11 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public boolean update(Customer entity) throws Exception {
-        return false;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(entity);
+        transaction.commit();
+        return true;
     }
 
     @Override
@@ -41,7 +46,14 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public List<Customer> getall() throws Exception {
-        return null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        List<Customer> list = null;
+        Query customers = session.createQuery("from Customer");
+        list = customers.list();
+        transaction.commit();
+        session.close();
+        return list;
     }
 
 }
